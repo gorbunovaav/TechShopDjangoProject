@@ -1,0 +1,19 @@
+{% extends 'techshopapp/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    {% for feedback in feedback_list %}
+        <p>{{feedback.item}}</p>
+        <p>{{feedback.title}}</p>
+        <p>{{feedback.content}}</p>
+        <p>{{feedback.author}}</p>
+        <p>{{feedback.published_date}}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

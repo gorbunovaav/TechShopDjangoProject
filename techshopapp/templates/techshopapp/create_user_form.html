@@ -1,0 +1,20 @@
+{% extends 'techshopapp/base.html' %}
+
+{% block title %}
+    Create user
+{% endblock  %}
+
+{% block content %}
+    <h1>Форма регистрации</h1>
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            В форме есть ошибки
+    </div>
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+
+{% endblock  %}
