@@ -59,6 +59,3 @@ class FeedbackListViewTest(TestCase):
         self.assertIn('feedback_list', response.context)
         self.assertEqual(len(response.context['feedback_list']), Feedback.objects.count())
 
-    # def tearDown(self):
-    #     Feedback.objects.all.delete()
-    #     User.objects.all.delete()
