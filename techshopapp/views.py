@@ -8,12 +8,34 @@ from django.utils import timezone
 
 def index(request):
     context = {
-        'title': 'The coolest Tech Shop in the world',
-        'description': 'You can buy here anything you want',
+        'title': 'TechShop - Главная',
+        'content': 'Приветствую вас в магазине техники TechShop!',
     }
     return render(request, "techshopapp/index.html", context=context)
 
+def about(request):
+    context = {
+        'title': 'TechShop - О нас',
+        'content': 'Здесь информация о том какой магазин классный',
+        'text_on_page': 'Здесь история магазина и информация о том какой он классный'
+    }
+    return render(request, "techshopapp/about.html", context=context)
 
+def contacts(request):
+    context = {
+        'title': 'TechShop - Контакты',
+        'content': 'Здесь информация о контактах',
+        'text_on_page': 'Здесь адрес и наша контанктная информация'
+    }
+    return render(request, "techshopapp/contacts.html", context=context)
+
+def delivery(request):
+    context = {
+        'title': 'TechShop - Доставка и оплата',
+        'content': 'Здесь информация о доставке и оплате',
+        'text_on_page': 'Здесь подробная информация о доставке и оплате'
+    }
+    return render(request, "techshopapp/contacts.html", context=context)
 def items_create(request):
     for i in range(20):
         item = Item.objects.create(name=f"Item_num{i}",

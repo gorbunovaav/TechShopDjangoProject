@@ -12,13 +12,12 @@
             <p>{{ item.price }}</p>
 
         <button type="button" class="btn btn-outline-primary" >
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'catalog' %}">Обратно к каталогу</a>
+            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:catalog' %}">Обратно к каталогу</a>
 
         </button>
         <button type="button" class="btn btn-outline-primary" >
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'feedback_create' %}">Оставить отзыв</a>
+            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:feedback_create' %}">Оставить отзыв</a>
 
         </button>
-<!--        <a href="{% url 'feedback_list' feedback.pk %}" class="btn btn-primary">Все отзывы о товаре</a>-->
 
 {% endblock %}

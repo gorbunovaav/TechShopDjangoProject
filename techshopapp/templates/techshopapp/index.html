@@ -1,4 +1,6 @@
 {% extends 'techshopapp/base.html' %}
+{% load static %}
+
 
 {% block title %}
 {{ title }}
@@ -13,13 +15,13 @@
 </ol>
 <div class="carousel-inner">
 <div class="carousel-item">
-<img class="d-block w-100" src="https://i.ytimg.com/vi/MtHwqfxpzL0/maxresdefault.jpg" alt="Первый слайд">
+<img class="d-block w-100" src="{% static 'images/dyson.jpg' %}" alt="Первый слайд">
 </div>
 <div class="carousel-item active">
-<img class="d-block w-100" src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_66c23289612ecf23aabb6338_66c232a8c2f3f2189af9bf6f/scale_1200" alt="Второй слайд">
+<img class="d-block w-100" src="{% static 'images/iphone.png' %}" alt="Второй слайд">
 </div>
 <div class="carousel-item">
-<img class="d-block w-100" src="https://avatars.mds.yandex.net/get-mpic/1726038/img_id6007837095195065671.jpeg/orig" alt="Третий слайд">
+<img class="d-block w-100" src="{% static 'images/samsung_flip.jpg' %}" alt="Третий слайд">
 </div>
 </div>
 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -31,4 +33,5 @@
 <span class="sr-only">Next</span>
 </a>
 </div>
+<h1>{{ content }}</h1>
 {% endblock %}

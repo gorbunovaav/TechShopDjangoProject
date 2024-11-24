@@ -1,8 +1,11 @@
 from django.urls import path
 from . import views
-
+app_name="techshop"
 urlpatterns = [
     path('home/', views.index, name="home"),
+    path('about/', views.about, name="about"),
+    path('contacts/', views.contacts, name="contacts"),
+    path('delivery/', views.delivery, name="delivery"),
     path('items_create/', views.items_create, name="items_create"),
     # path('contacts/', views.contacts, name="contacts"),
     path('catalog/', views.ItemListView.as_view(), name="catalog"),

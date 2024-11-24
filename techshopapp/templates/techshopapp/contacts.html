@@ -1,0 +1,14 @@
+{% extends 'techshopapp/base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="mt-5 pt-5 bg-blue">
+    <h2 class="m-2">{{ content }}</h2>
+    <p class="m-2">{{ text_on_page }}</p>
+    </div>
+{% endblock %}
