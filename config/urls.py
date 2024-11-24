@@ -23,4 +23,5 @@ urlpatterns = [
     # path('', views.index, name='index'),
     # path('about/', views.about, name='about'),
     path('', include('techshopapp.urls', namespace="techshop")),
+    path('catalog/', include('items.urls', namespace="items")),
 ]
