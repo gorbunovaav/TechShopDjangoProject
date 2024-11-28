@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
+from config.settings import DEBUG
 from techshopapp import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +27,9 @@ urlpatterns = [
     path('', include('techshopapp.urls', namespace="techshop")),
     path('catalog/', include('items.urls', namespace="items")),
 ]
+
+if DEBUG:
+    urlpatterns += [
+        path("__debug__/", include("debug_toolbar.urls")),
+    ]
+
