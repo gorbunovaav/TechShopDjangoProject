@@ -28,3 +28,16 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+    def display_id(self):
+        return f'{self.id:05}'
+
+    def sell_price(self):
+        if self.discount:
+            return round(self.price-self.discount*self.price/100, 2)
+        else:
+            return self.price
+
+    def discount_percent(self):
+        return f'{round(self.discount, 0)}%'
+

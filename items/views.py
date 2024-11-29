@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from items.models import Item
+
 #     return render()
 #
 # def item(request):
@@ -15,56 +16,12 @@ def items_create(request):
         item.save()
     return HttpResponse('Create items')
 
+
 def catalog(request):
+    items = Item.objects.all()
     context = {
         'title': 'TechShop - Каталог',
-        'items': [
-        {'name': 'Iphone',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone2',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone3',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone4',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone5',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone6',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone7',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone8',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-        {'name': 'Iphone9',
-         'description': 'The best phone',
-         'price': '1434',
-         'image': 'No image'
-         },
-    ]
+        'items': items,
     }
     return render(request, 'items/catalog.html', context=context)
 

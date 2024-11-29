@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
-from config.settings import DEBUG
+from config import settings
 from techshopapp import views
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -28,8 +29,9 @@ urlpatterns = [
     path('catalog/', include('items.urls', namespace="items")),
 ]
 
-if DEBUG:
+if settings.DEBUG:
     urlpatterns += [
         path("__debug__/", include("debug_toolbar.urls")),
     ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

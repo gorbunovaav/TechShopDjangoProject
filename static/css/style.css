@@ -1,0 +1,58 @@
+body{
+    background-color: black;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.box {
+  position: relative;
+  width: 400px;
+  height: 450px;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+.img_card{
+ width: 400px;
+ height: 300px;
+}
+
+.ribbon {
+  position: absolute;
+  display: inline-block;
+
+  top: 0.3em;
+  right: 0.8em;
+
+  max-width: 5em;
+
+  color: #fff;
+
+  z-index: 1;
+}
+
+.ribbon::after {
+  position: absolute;
+  top: -1.5em;
+  right: -6em;
+  content: "";
+
+  height: 5em;
+  width: 15em;
+
+  transform: rotatez(45deg);
+
+  background-color: red;
+  z-index:-1;
+}

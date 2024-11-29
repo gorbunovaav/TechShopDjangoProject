@@ -7,11 +7,10 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from items.models import Categories
 def index(request):
-    categories = Categories.objects.all()
+
     context = {
         'title': 'TechShop - Главная',
         'content': 'Приветствую вас в магазине техники TechShop!',
-        'categories': categories
     }
     return render(request, "techshopapp/index.html", context=context)
 

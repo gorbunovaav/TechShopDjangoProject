@@ -9,13 +9,29 @@
 
 <div class="row">
     {% for item in items %}
-    <div class="card" style="width: 20rem;">
-        <img src="https://kotofoto.ru/product_img/69/488837/488837_smartfon_samsung_galaxy_z_flip3_f711b_128gb_beigem.jpg?v=1630324632"
+    <div class="card box" style="width: 20rem;">
+        {% if item.image %}
+            <img src="{{ item.image.url }}"
+            class="card-img-top img_card" alt="{{ item.name }}">
+        {% else %}
+            <img src="{% static 'images/not_found_img.jpg' %}"
             class="card-img-top" alt="...">
+        {% endif %}
+
         <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text">{{ item.description }}</p>
-            <span>{{ item.price }}</span>
+            {% if item.discount %}
+            <p>Значок с информацией о скидке</p>
+            <div class="ribbon text-center">{{ item.discount_percent }}<br>Sale</div>
+            <span>Цена: <s>{{ item.price }}</s></span>
+            <span>{{ item.sell_price }}</span>
+            {% else %}
+            <span>Цена: {{ item.price }}</span>
+            {% endif %}
+            <p>id: {{ item.display_id }}</p>
+
+            <p>Скидка: {{ item.discount }}%</p>
             <a href="#" class="btn btn-primary">Купить</a>
         </div>
     </div>
