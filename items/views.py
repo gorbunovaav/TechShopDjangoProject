@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from items.models import Item
+
 
 #     return render()
 #
@@ -17,16 +18,25 @@ def items_create(request):
     return HttpResponse('Create items')
 
 
-def catalog(request):
-    items = Item.objects.all()
+def catalog(request, category_slug):
+    if category_slug == 'all':
+        items = Item.objects.all()
+    else:
+        items = get_list_or_404(Item.objects.filter(category__slug=category_slug))
+
     context = {
         'title': 'TechShop - Каталог',
         'items': items,
     }
     return render(request, 'items/catalog.html', context=context)
 
-def item(request):
-    return render(request, 'items/item.html')
+def item(request, item_slug):
+
+    item = Item.objects.get(slug=item_slug)
+    context = {
+        'item': item,
+    }
+    return render(request, 'items/item.html', context=context)
 # class ItemListView(ListView):
 #     model = Item
 #     template_name = "items/catalog.html"

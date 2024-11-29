@@ -5,16 +5,24 @@
 {% endblock %}
 
 {% block content %}
-        <img width="500px" class="img-fluid" src="https://kotofoto.ru/product_img/69/488837/488837_smartfon_samsung_galaxy_z_flip3_f711b_128gb_beigem.jpg?v=1630324632"
+        <img width="500px" class="img-fluid" src="{{ item.image.url }}"
              alt="Item Image">
             <p>{{ item.name }}</p>
             <p>{{ item.description }}</p>
-            <p>{{ item.price }}</p>
+            {% if item.discount %}
+            <p>Sale!</p>
+            <span>Цена: <s>{{ item.price }}</s></span>
+            <span>{{ item.sell_price }}</span>
+            {% else %}
+            <span>Цена: {{ item.price }}</span>
+            {% endif %}
+            <p>id: {{ item.display_id }}</p>
+            <p>id: {{ item.description }}</p>
 
-        <button type="button" class="btn btn-outline-primary" >
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:catalog' %}">Обратно к каталогу</a>
+<!--        <button type="button" class="btn btn-outline-primary" >-->
+<!--            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'items:catalog' category.slug %}">Обратно к каталогу</a>-->
 
-        </button>
+<!--        </button>-->
         <button type="button" class="btn btn-outline-primary" >
             <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:feedback_create' %}">Оставить отзыв</a>
 

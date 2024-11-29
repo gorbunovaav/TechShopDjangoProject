@@ -12,7 +12,7 @@
             <p>{{ item.price }}</p>
 
         <button type="button" class="btn btn-outline-primary" >
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:catalog' %}">Обратно к каталогу</a>
+            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'items:catalog' category.slug %}">Обратно к каталогу</a>
 
         </button>
         <button type="button" class="btn btn-outline-primary" >

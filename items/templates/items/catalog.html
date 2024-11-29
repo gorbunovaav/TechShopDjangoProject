@@ -19,7 +19,9 @@
         {% endif %}
 
         <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
+            <h5 class="card-title">
+                <a href="{% url 'items:item_info' item.slug %}">{{ item.name }}</a>
+            </h5>
             <p class="card-text">{{ item.description }}</p>
             {% if item.discount %}
             <p>Значок с информацией о скидке</p>
