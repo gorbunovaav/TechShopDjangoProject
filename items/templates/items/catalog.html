@@ -22,7 +22,7 @@
             <h5 class="card-title">
                 <a href="{% url 'items:item_info' item.slug %}">{{ item.name }}</a>
             </h5>
-            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text">{{ item.description|truncatechars:55 }}</p>
             {% if item.discount %}
             <p>Значок с информацией о скидке</p>
             <div class="ribbon text-center">{{ item.discount_percent }}<br>Sale</div>
@@ -41,16 +41,28 @@
 </div>
 <nav aria-label="Пример навигации по страницам">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link">Предыдущая</a>
+    <li class="page-item {% if not items.has_previous %} disabled {% endif %}">
+      <a class="page-link" href="{% if items.has_previous %}
+      {% url 'items:catalog' slug_url items.previous_page_number %}
+      {% else %}
+      #
+      {% endif %}">Предыдущая</a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">4</a></li>
-      <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Следующая</a>
+      {% for page in items.paginator.page_range %}
+      {% if page >= items.number|add:-2 and page <= items.number|add:2 %}
+      <li class="page-item {% if items.number == page %}
+            active
+            {%endif%}"><a class="page-link" href="{% url 'items:catalog' slug_url page %}">
+            {{ page }}</a>
+      {%endif%}
+        </li>
+      {% endfor %}
+    <li class="page-item {% if not items.has_next %} disabled {% endif %}">
+      <a class="page-link" href="{% if items.has_next %}
+      {% url 'items:catalog' slug_url items.next_page_number %}
+      {% else %}
+      #
+      {% endif %}">Следующая</a>
     </li>
   </ul>
 </nav>

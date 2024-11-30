@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_list_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from items.models import Item
+from django.core.paginator import Paginator
 
 
 #     return render()
@@ -18,15 +19,18 @@ def items_create(request):
     return HttpResponse('Create items')
 
 
-def catalog(request, category_slug):
+def catalog(request, category_slug, page=1):
     if category_slug == 'all':
         items = Item.objects.all()
     else:
         items = get_list_or_404(Item.objects.filter(category__slug=category_slug))
 
+    paginator = Paginator(items, 3)
+    current_page = paginator.page(page)
     context = {
         'title': 'TechShop - Каталог',
-        'items': items,
+        'items': current_page,
+        'slug_url': category_slug,
     }
     return render(request, 'items/catalog.html', context=context)
 
