@@ -2,6 +2,7 @@ from django.shortcuts import render, get_list_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from items.models import Item
 from django.core.paginator import Paginator
+from items.utils import q_search
 
 
 #     return render()
@@ -19,13 +20,16 @@ def items_create(request):
     return HttpResponse('Create items')
 
 
-def catalog(request, category_slug):
+def catalog(request, category_slug=None):
     page = request.GET.get('page', 1)
     on_sale = request.GET.get('on_sale', None)
     order_by = request.GET.get('order_by', None)
+    query = request.GET.get('q', None)
 
     if category_slug == 'all':
         items = Item.objects.all()
+    elif query:
+        items = q_search(query)
     else:
         items = get_list_or_404(Item.objects.filter(category__slug=category_slug))
 

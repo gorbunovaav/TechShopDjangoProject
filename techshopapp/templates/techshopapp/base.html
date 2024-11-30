@@ -50,8 +50,8 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+      <form class="d-flex" role="search" method="get" action="{% url 'items:search' %}">
+        <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Поиск">
         <button class="btn btn-outline-success" type="submit">Поиск</button>
       </form>
     </div>
