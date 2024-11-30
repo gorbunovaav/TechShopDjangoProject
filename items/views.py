@@ -21,12 +21,21 @@ def items_create(request):
 
 def catalog(request, category_slug):
     page = request.GET.get('page', 1)
+    on_sale = request.GET.get('on_sale', None)
+    order_by = request.GET.get('order_by', None)
+
     if category_slug == 'all':
         items = Item.objects.all()
     else:
         items = get_list_or_404(Item.objects.filter(category__slug=category_slug))
 
-    paginator = Paginator(items, 3)
+    if on_sale:
+        items = items.filter(discount__gt=0)
+
+    if order_by and order_by != 'default':
+        items = items.order_by(order_by)
+
+    paginator = Paginator(items, 6)
     current_page = paginator.page(int(page))
     context = {
         'title': 'TechShop - Каталог',
