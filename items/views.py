@@ -19,14 +19,15 @@ def items_create(request):
     return HttpResponse('Create items')
 
 
-def catalog(request, category_slug, page=1):
+def catalog(request, category_slug):
+    page = request.GET.get('page', 1)
     if category_slug == 'all':
         items = Item.objects.all()
     else:
         items = get_list_or_404(Item.objects.filter(category__slug=category_slug))
 
     paginator = Paginator(items, 3)
-    current_page = paginator.page(page)
+    current_page = paginator.page(int(page))
     context = {
         'title': 'TechShop - Каталог',
         'items': current_page,
