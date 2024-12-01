@@ -1,23 +1,30 @@
 body{
-    background-color: black;
+    background-image: url('static/images/background_image);
 
 }
 
+main{
+color: white !important;
+}
 * {
     margin: 0;
 }
 html, body {
     height: 100%;
 }
+.form{
+width: 500px !important;
+background-color: black;
+
+}
 .main {
+    background-size: cover;
     min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
 }
-.footer, .push {
-    height: 142px; /* .push must be the same height as .footer */
-}
+
 
 * {
   box-sizing: border-box;
@@ -78,3 +85,4 @@ html, body {
 height: 100vh !important;
 }
 }
+

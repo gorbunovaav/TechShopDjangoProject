@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from techshopapp.models import Item, User, Feedback
-from .forms import CreateUserForm
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from techshopapp.models import Item, Feedback
+from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
 from django.utils import timezone
-from items.models import Categories
+
+
 def index(request):
 
     context = {
