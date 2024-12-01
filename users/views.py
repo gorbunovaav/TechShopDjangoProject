@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from users.forms import UserLoginForm
+from users.forms import UserLoginForm, CreateUserForm
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import redirect
 
 
 
@@ -24,13 +25,23 @@ def login(request):
         'title': 'TechShop - Авторизация',
         'form': form,
     }
-    return render(request, 'users/login.html', context=context)
+    return render(request, 'users/login.html', context)
 
 def registration(request):
+    if request.method == 'POST':
+        form = CreateUserForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.instance
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('techshop:home'))
+    else:
+        form = CreateUserForm()
     context = {
         'title': 'TechShop - Регистрация',
+        'form': form,
     }
-    return render(request, 'users/registration.html', context=context)
+    return render(request, 'users/registration.html', context)
 
 
 def profile(request):
@@ -47,4 +58,5 @@ def cart(request):
 
 
 def logout(request):
-    pass
+    auth.logout(request)
+    return redirect(reverse('techshop:home'))

@@ -57,13 +57,17 @@
         <button class="btn btn-outline-success" type="submit">Поиск</button>
       </form>
 
-
+      {% if not user.is_authenticated %}
    <button type="button" class="btn btn-dark">
-     <a href="{% url 'users:registration' %}">Регистрация</a>
+     <a href="{% url 'users:registration' %}">Зарегистрироваться</a>
    </button>
+      {% endif %}
+      {% if not user.is_authenticated %}
     <button type="button" class="btn btn-dark">
-      <a href="{% url 'users:login' %}">Вход</a>
+      <a href="{% url 'users:login' %}">Войти</a>
     </button>
+      {% endif %}
+      {% if user.is_authenticated %}
       <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
     Мой профиль
@@ -72,10 +76,13 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <li><a class="dropdown-item" href="{% url 'users:profile' %}">Личный кабинет</a></li>
             <li><a class="dropdown-item" href="{% url 'users:cart' %}">Корзина</a></li>
-            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Админ панель</a></li>
-            <li><a class="dropdown-item" href="#">Выйти</a></li>
+    {% if user.is_admin or user.is_staff %}
+      <li><a class="dropdown-item" href="{% url 'admin:index' %}">Админ панель</a></li>
+    {% endif %}
+    <li><a class="dropdown-item" href="{% url 'users:logout' %}">Выйти</a></li>
   </ul>
 </div>
+      {% endif %}
        </div>
  </div>
 </div>

@@ -8,26 +8,99 @@
 
 {% block content %}
 
-<!-- Pills navs -->
-<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="tab-login" data-mdb-pill-init href="#pills-login" role="tab"
-      aria-controls="pills-login" aria-selected="true">Login</a>
-  </li>
-  <li class="nav-item active" role="presentation">
-    <a class="nav-link" id="tab-register" data-mdb-pill-init href="#pills-register" role="tab"
-      aria-controls="pills-register" aria-selected="false">Register</a>
-  </li>
-</ul>
-<!-- Pills navs -->
-
-<!-- Pills content -->
+<div class="d-flex align-items-center justify-content-center">
+<div class=" col-md-6 bg-white p-4 mb-4 mx-3">
 <div class="tab-content">
   <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
 
-    <form>
+    <form method="post" action="{% url 'user:registration' %}">
+        {% csrf_token %}
+      <h2 class="text-center mb-4">Регистрация</h2>
+
+      <!-- Name input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="id_first_name">Имя</label>
+        <input type="text" id="id_first_name" value="{% if form.first_name.value %}{{ form.first_name.value }} {% endif %}" class="form-control" placeholder="Введите ваше имя" name="first_name" required />
+          {% if form.first_name.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ form.first_name.errors }}
+        </div>
+          {% endif %}
+      </div>
+
+        <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="id_last_name">Фамилия</label>
+        <input type="text" id="id_last_name" class="form-control" value="{% if form.last_name.value %}{{ form.last_name.value }} {% endif %}" placeholder="Введите вашу фамилию" name="last_name" required />
+      {% if form.last_name.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ form.last_name.errors }}
+        </div>
+          {% endif %}
+        </div>
+
+       <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="id_username">Введите имя пользователя</label>
+    <input type="text" value="{% if form.username.value %}{{ form.username.value }} {% endif %}" id="id_username" name="username" class="form-control" placeholder="Введите имя пользователя" required />
+        {% if form.username.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ form.username.errors }}
+        </div>
+          {% endif %}
+       </div>
+
+      <!-- Email input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="id_email">Email</label>
+        <input type="email" id="id_email" name="email" placeholder="Введите email" value="{% if form.email.value %}{{ form.email.value }} {% endif %}" class="form-control" required />
+      {% if form.email.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ form.email.errors }}
+        </div>
+          {% endif %}
+      </div>
+
+      <!-- Password input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="password1_id">Пароль</label>
+        <input type="password" name="password1" id="password1_id" class="form-control" value="{% if form.password1.value %}{{ form.password1.value }} {% endif %}" placeholder="Введите пароль" required />
+      {% if form.password1.errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ form.password1.errors }}
+        </div>
+          {% endif %}
+      </div>
+
+      <!-- Repeat Password input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="password2_id">Подтверждение пароля</label>
+        <input type="password" name="password2" id="password2_id" class="form-control" value="{% if form.password2.value %}{{ form.password2.value }} {% endif %}" placeholder="Подтвердите пароль" required />
+          {% if form.password2.errors %}
+          <div class="alert alert-danger alert-dismissible fade show">
+          {{ form.password2.errors }}
+        </div>
+          {% endif %}
+      </div>
+
+      <!-- Checkbox -->
+      <div class="form-check d-flex justify-content-left mb-4">
+        <input class="form-check-input me-2 " type="checkbox" value="" id="registerCheck" unchecked
+          aria-describedby="registerCheckHelpText" />
+                <label class="form-check-label" for="registerCheck">
+          Я ознакомился с <a href="#">правилами пользования</a>
+        </label>
+
+
+      </div>
+
+       Submit button
+      <div class="d-flex justify-content-center">
+          <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-3">Зарегистрироваться</button>
+
+   </div>
+    </form>
+
       <div class="text-center mb-3">
-        <p>Sign up with:</p>
+        <p>Вы можете войти в аккаунт с помощью:</p>
 
             <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
 <!--        <i class="bi bi-github"></i>-->
@@ -45,54 +118,19 @@
 
     </button>
       </div>
-
-      <p class="text-center">or:</p>
-
-      <!-- Name input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <input type="text" id="registerName" class="form-control" />
-        <label class="form-label" for="registerName">Name</label>
-      </div>
-
-      <!-- Username input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <input type="text" id="registerUsername" class="form-control" />
-        <label class="form-label" for="registerUsername">Username</label>
-      </div>
-
-      <!-- Email input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <input type="email" id="registerEmail" class="form-control" />
-        <label class="form-label" for="registerEmail">Email</label>
-      </div>
-
-      <!-- Password input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <input type="password" id="registerPassword" class="form-control" />
-        <label class="form-label" for="registerPassword">Password</label>
-      </div>
-
-      <!-- Repeat Password input -->
-      <div data-mdb-input-init class="form-outline mb-4">
-        <input type="password" id="registerRepeatPassword" class="form-control" />
-        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-      </div>
-
-      <!-- Checkbox -->
-      <div class="form-check d-flex justify-content-center mb-4">
-        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-          aria-describedby="registerCheckHelpText" />
-        <label class="form-check-label" for="registerCheck">
-          I have read and agree to the terms
-        </label>
-      </div>
-
-      <!-- Submit button -->
-      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-3">Sign in</button>
-    </form>
   </div>
   </div>
 
 </div>
+</div>
+<!--<script>-->
+<!--    if($(".checked-list-box li.list-group-item-primary.active").length > 0){-->
+<!--   alert("hello");-->
+<!--} else {-->
+<!--   alert("not checked");-->
+<!--}-->
+<!--</script>-->
+
+
 <!-- Pills content -->
 {% endblock %}
