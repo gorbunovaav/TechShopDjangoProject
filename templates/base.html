@@ -8,6 +8,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[email protected]/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
@@ -19,7 +20,6 @@
     <a class="navbar-brand" href="{% url 'techshop:home' %}">The best TechShop</a>
       <span class="navbar-toggler-icon">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">  </button>
-
       </span>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -50,13 +50,34 @@
           </ul>
         </li>
       </ul>
+
+
       <form class="d-flex" role="search" method="get" action="{% url 'items:search' %}">
         <input class="form-control me-2" type="search" name="q" placeholder="Поиск" aria-label="Поиск">
         <button class="btn btn-outline-success" type="submit">Поиск</button>
       </form>
-    </div>
-   <button type="button" class="btn btn-dark">Зарегистрироваться</button>
 
+
+   <button type="button" class="btn btn-dark">
+     <a href="{% url 'users:registration' %}">Регистрация</a>
+   </button>
+    <button type="button" class="btn btn-dark">
+      <a href="{% url 'users:login' %}">Вход</a>
+    </button>
+      <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Мой профиль
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="{% url 'users:profile' %}">Личный кабинет</a></li>
+            <li><a class="dropdown-item" href="{% url 'users:cart' %}">Корзина</a></li>
+            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Админ панель</a></li>
+            <li><a class="dropdown-item" href="#">Выйти</a></li>
+  </ul>
+</div>
+       </div>
+ </div>
 </div>
 </div>
   </nav>

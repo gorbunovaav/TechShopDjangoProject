@@ -67,8 +67,14 @@ html, body {
   height: 5em;
   width: 15em;
 
-  transform: rotatez(45deg);
+  transform: rotate(45deg);
 
   background-color: red;
   z-index:-1;
+}
+
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
 }

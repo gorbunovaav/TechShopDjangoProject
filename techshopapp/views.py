@@ -63,16 +63,16 @@ def create_user_form(request):
 #     return render(request, "techshopapp/catalog.html", context={'items': items})
 
 
-class ItemListView(ListView):
-    model = Item
-    template_name = "techshopapp/catalog.html"
-    context_object_name = 'items'
+# class ItemListView(ListView):
+#     model = Item
+#     template_name = "techshopapp/catalog.html"
+#     context_object_name = 'items'
 
 
-class ItemDetailView(DetailView):
-    model = Item
-    template_name = "techshopapp/item.html"
-    context_object_name = 'item'
+# class ItemDetailView(DetailView):
+#     model = Item
+#     template_name = "techshopapp/item.html"
+#     context_object_name = 'item'
 
 
 class FeedbackListView(ListView):

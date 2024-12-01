@@ -27,6 +27,8 @@ urlpatterns = [
     # path('about/', views.about, name='about'),
     path('', include('techshopapp.urls', namespace="techshop")),
     path('catalog/', include('items.urls', namespace="items")),
+    path('user/', include('users.urls', namespace="user")),
+
 ]
 
 if settings.DEBUG:
