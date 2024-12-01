@@ -17,6 +17,11 @@ width: 500px !important;
 background-color: black;
 
 }
+
+.btn_login a:hover{
+    color: white;
+}
+
 .main {
     background-size: cover;
     min-height: 100%;

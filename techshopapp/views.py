@@ -18,7 +18,7 @@ def about(request):
     context = {
         'title': 'TechShop - О нас',
         'content': 'Здесь информация о том какой магазин классный',
-        'text_on_page': 'Здесь история магазина и информация о том какой он классный'
+        'text_on_page': 'Здесь история магазина и информация о том какой он классный Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     }
     return render(request, "techshopapp/about.html", context=context)
 
@@ -26,7 +26,9 @@ def contacts(request):
     context = {
         'title': 'TechShop - Контакты',
         'content': 'Здесь информация о контактах',
-        'text_on_page': 'Здесь адрес и наша контанктная информация'
+        'text_on_page': 'Москва, Россия, Адрес'
+                        'techshop@example.com'
+                        '+ 055588373772'
     }
     return render(request, "techshopapp/contacts.html", context=context)
 
@@ -34,9 +36,9 @@ def delivery(request):
     context = {
         'title': 'TechShop - Доставка и оплата',
         'content': 'Здесь информация о доставке и оплате',
-        'text_on_page': 'Здесь подробная информация о доставке и оплате'
-    }
-    return render(request, "techshopapp/contacts.html", context=context)
+        'text_on_page': 'Доставка осуществляется курьерской службой СДЭК. Детальные условия доставки в Ваш город (стоимость, сроки, оплата) и возможность использовать альтернативные варианты (Почта России, курьерская служба Яндекс, EMS) можно узнать непосредственно у оператора интернет-магазина, при подтверждении заказа. Заказы по г. Новосибирску и г. Бердску доставляются, в рабочие дни с 10:00 до 18:00, отправка заказа происходит на следующий день после подтверждения оператором интернет-магазина. При сумме заказа меньше 5 000 рублей стоимость доставки – 550 руб. В выходные и праздничные дни доставка не осуществляется. Самостоятельно забрать заказы в г. Новосибирск можно c 09:00-21:00, перерывы 12:30-13:00, 16:30-17:00, без выходных, в офисе по адресу ул. Коммунистическая, 35. Заказ доставляется в офис на следующий рабочий день после подтверждения оператором интернет-магазина и оплаты заказа на сайте. '
+                        'Заказы по г. Москва (в пределах МКАД) доставляются курьером, на следующий рабочий день после подтверждения оператором интернет-магазина и оплаты заказа на сайте. При сумме заказа меньше 5 000 рублей стоимость доставки – 550 руб. Если Вы хотите оплатить заказ при получении, то заказ будет доставлен в течение 3-7 рабочих дней. В выходные и праздничные дни доставка не осуществляется.'}
+    return render(request, "techshopapp/delivery.html", context=context)
 def items_create(request):
     for i in range(20):
         item = Item.objects.create(name=f"Item_num{i}",

@@ -7,8 +7,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="mt-5 pt-5 bg-blue">
+    <div class="pt-3 bg-blue">
     <h2 class="m-2">{{ content }}</h2>
-    <p class="m-2">{{ text_on_page }}</p>
+        <div class="row">
+            <div class="col">
+                <p class="m-2">{{ text_on_page }}</p>
+            </div>
+            <div class="col">
+                <img width="100%" src="{% static 'images/shop_image.avif' %}" alt="">
+            </div>
+
+        </div>
+
+
     </div>
 {% endblock %}
