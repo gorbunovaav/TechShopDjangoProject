@@ -59,6 +59,12 @@
 
 </div>
 <div class="row">
+    {% if request.GET.q %}
+    <h3 class="mt-4">Результаты поиска по запросу {{request.GET.q}}:</h3>
+    {% if not items%}
+    <h3 class="mt-4">По запросу {{request.GET.q}} ничего не найдено</h3>
+    {% endif %}
+    {% endif %}
     {% for item in items %}
     <div class="card box" style="width: 20rem;">
         {% if item.image %}
@@ -71,9 +77,26 @@
 
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{% url 'items:item_info' item.slug %}">{{ item.name }}</a>
+                <a href="{% url 'items:item_info' item.slug %}">
+                    {% autoescape off %}
+                        {% if item.headline %}
+                        {{ item.headline}}
+                        {% else %}
+                        {{ item.name }}
+                        {% endif %}
+                    {% endautoescape %}
+                </a>
             </h5>
-            <p class="card-text">{{ item.description|truncatechars:55 }}</p>
+            <p class="card-text">
+                {% autoescape off %}
+                        {% if item.bodyline %}
+                        {{ item.bodyline|truncatechars:100}}
+                        {% else %}
+                        {{ item.description|truncatechars:55 }}
+                        {% endif %}
+                    {% endautoescape %}
+                </a>
+            </p>
             {% if item.discount %}
             <p>Значок с информацией о скидке</p>
             <div class="ribbon text-center">{{ item.discount_percent }}<br>Sale</div>
@@ -89,8 +112,10 @@
         </div>
     </div>
     {% endfor %}
+
 </div>
-<nav aria-label="Пример навигации по страницам">
+{% if items %}
+<nav>
   <ul class="pagination justify-content-center">
     <li class="page-item {% if not items.has_previous %} disabled {% endif %}">
       <a class="page-link" href="{% if items.has_previous %} ?{% change_params page=items.previous_page_number %}
@@ -116,5 +141,6 @@
     </li>
   </ul>
 </nav>
+{% endif %}
 
 {% endblock %}
