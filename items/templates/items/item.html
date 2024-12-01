@@ -17,12 +17,8 @@
             <span>Цена: {{ item.price }}</span>
             {% endif %}
             <p>id: {{ item.display_id }}</p>
-            <p>id: {{ item.description }}</p>
 
-<!--        <button type="button" class="btn btn-outline-primary" >-->
-<!--            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'items:catalog' category.slug %}">Обратно к каталогу</a>-->
 
-<!--        </button>-->
         <button type="button" class="btn btn-outline-primary" >
             <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:feedback_create' %}">Оставить отзыв</a>
 
