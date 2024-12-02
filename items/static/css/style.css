@@ -1,0 +1,100 @@
+body{
+    background-image: url('static/images/background_image);
+
+}
+
+main{
+color: white !important;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.form{
+width: 500px !important;
+background-color: black;
+
+}
+
+.btn_login a:hover{
+    color: white;
+}
+
+.dropdown{
+z-index: 100000 !important;
+}
+
+.main {
+    background-size: cover;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.box {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+.ribbon {
+  position: absolute;
+  display: inline-block;
+
+  top: 0.3em;
+  right: 0.8em;
+
+  max-width: 5em;
+
+  color: #fff;
+
+  z-index: 1;
+}
+
+.ribbon::after {
+  position: absolute;
+  top: -1.5em;
+  right: -6em;
+  content: "";
+
+  height: 5em;
+  width: 15em;
+
+  transform: rotatez(45deg);
+
+  background-color: red;
+  z-index:-1;
+}
+
+
+.img_card{
+ width: 400px;
+ height: 300px;
+}
+
+
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
+

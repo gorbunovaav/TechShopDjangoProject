@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
-        <img width="500px" class="img-fluid" src="{{ item.image.url }}"
+<div class="container pt-5 bg-white text-center pb-3" style="width: 50%">
+
+        <img width="400px" class="img-fluid mt-2 mb-2" src="{{ item.image.url }}"
              alt="Item Image">
-            <p>{{ item.name }}</p>
+            <h3>{{ item.name }}</h3>
             <p>{{ item.description }}</p>
             {% if item.discount %}
             <p>Sale!</p>
@@ -18,10 +20,14 @@
             {% endif %}
             <p>id: {{ item.display_id }}</p>
 
-
-        <button type="button" class="btn btn-outline-primary" >
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'techshop:feedback_create' %}">Оставить отзыв</a>
+         <button type="button" class="btn btn-outline-primary" >
+            <a class="link-offset-2 link-underline link-underline-opacity-0 text-decoration-none" href="#">Добавить в корзину</a>
 
         </button>
 
+        <button type="button" class="btn btn-outline-primary" >
+            <a class="link-offset-2 link-underline link-underline-opacity-0 text-decoration-none" href="{% url 'techshop:feedback_create' %}">Оставить отзыв</a>
+
+        </button>
+</div>
 {% endblock %}

@@ -22,6 +22,10 @@ background-color: black;
     color: white;
 }
 
+.dropdown{
+z-index: 100000 !important;
+}
+
 .main {
     background-size: cover;
     min-height: 100%;
@@ -35,6 +39,7 @@ background-color: black;
   box-sizing: border-box;
 }
 
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -45,15 +50,10 @@ background-color: black;
 
 .box {
   position: relative;
-  width: 400px;
-  height: 450px;
+  width: 500px;
+  height: 350px;
   background-color: #ddd;
   overflow: hidden;
-}
-
-.img_card{
- width: 400px;
- height: 300px;
 }
 
 .ribbon {
@@ -79,11 +79,18 @@ background-color: black;
   height: 5em;
   width: 15em;
 
-  transform: rotate(45deg);
+  transform: rotatez(45deg);
 
   background-color: red;
   z-index:-1;
 }
+
+
+.img_card{
+ width: 400px;
+ height: 300px;
+}
+
 
 @media (min-width: 1025px) {
 .h-custom {

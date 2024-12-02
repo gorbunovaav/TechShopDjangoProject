@@ -39,7 +39,7 @@ def catalog(request, category_slug=None):
     if order_by and order_by != 'default':
         items = items.order_by(order_by)
 
-    paginator = Paginator(items, 6)
+    paginator = Paginator(items, 3)
     current_page = paginator.page(int(page))
     context = {
         'title': 'TechShop - Каталог',
@@ -55,13 +55,4 @@ def item(request, item_slug):
         'item': item,
     }
     return render(request, 'items/item.html', context=context)
-# class ItemListView(ListView):
-#     model = Item
-#     template_name = "items/catalog.html"
-#     context_object_name = 'items'
 
-
-# class ItemDetailView(DetailView):
-#     model = Item
-#     template_name = "items/item.html"
-#     context_object_name = 'item'
